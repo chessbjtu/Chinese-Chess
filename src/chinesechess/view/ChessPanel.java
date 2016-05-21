@@ -7,6 +7,6 @@ package chinesechess.view;
 
 import javax.swing.*;
 
-public class ChessPanel extends JPanel{
+public class ChessPanel extends JPanel {
 	
 }

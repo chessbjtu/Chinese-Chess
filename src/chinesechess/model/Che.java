@@ -13,32 +13,37 @@ import javax.swing.ImageIcon;
 public class Che extends Chess {
 	public Che(boolean who, int x, int y) {
 		super(who, null, x, y);
-		if (who) {
-			URL imgURL = getClass().getResource("chinesechess/resource/r-Che.jpg");
+		if (who) {//红方
+			URL imgURL = getClass().getResource("chinesechess/resource/r_Che.jpg");
 			setImage(new ImageIcon(imgURL));
-		}else{
-			URL imgURL = getClass().getResource("chinesechess/resource/b-Che.jpg");
+		} else {//黑方
+			URL imgURL = getClass().getResource("chinesechess/resource/b_Che.jpg");
 			setImage(new ImageIcon(imgURL));
 		}
 	}
 
 	/**
-	 * 车的移动策略，首先保证直线移动
-	 * 其次，移动路径中不能有其他棋子
-	 * 终点坐标如果为敌方棋子，移动同样合法
+	 * 车的移动策略，首先保证直线移动 其次，移动路径中不能有其他棋子 终点坐标如果为敌方棋子，移动同样合法
 	 */
 	@Override
 	public boolean move(int x, int y, int[][] current_status) {
-		if(getX() == x){//纵向移动
-			
-			
-		}else if(getY() == y){//横向移动
-			
-		}else {//非法移动
+		if (getX() == x) {// 纵向移动
+			for (int temp : current_status[x]) {
+				if (current_status[x][temp] == 0) {
+					return true;
+				}
+			}
+
+		} else if (getY() == y) {// 横向移动
+			for (int temp : current_status[x]) {
+				if (current_status[temp][temp] == 0) {
+					return true;
+				}
+			}
+		} else {// 非法移动
 			return false;
 		}
 		return false;
 	}
-	
-	
+
 }
