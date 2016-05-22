@@ -10,6 +10,11 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 
 public class Zu extends Chess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6198652456049799687L;
+
 	public Zu(boolean who, ImageIcon image, int x, int y) {
 		super(who, null, x, y);
 		if (who) {// ºì·½

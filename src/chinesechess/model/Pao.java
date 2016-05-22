@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 
 public class Pao extends Chess {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4388807141617701084L;
+
 	public Pao(boolean who, ImageIcon image, int x, int y) {
 		super(who, null, x, y);
 		if (who) {// ºì·½

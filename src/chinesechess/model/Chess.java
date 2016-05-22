@@ -14,9 +14,14 @@ import javax.swing.JLabel;
  * @author ASUS
  */
 public abstract class Chess extends JLabel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3172086585879537618L;
 	// 棋子阵营,true为红方,false为黑方
 	private boolean who;
 	// 棋子图片
+	@SuppressWarnings("unused")
 	private ImageIcon image;
 	// 棋子坐标
 	private int x, y;
@@ -51,15 +56,16 @@ public abstract class Chess extends JLabel {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
+
 	/**
-	 * 棋子的移动策略，所有棋子必须实现这个方法
-	 * 注意：棋子的移动导致被将军也为不合法
+	 * 棋子的移动策略，所有棋子必须实现这个方法 注意：棋子的移动导致被将军也为不合法
 	 * 
-	 * @param x 
-	 * @param y 终点坐标
-	 * @param current_status 当前棋面
+	 * @param x
+	 * @param y
+	 *            终点坐标
+	 * @param current_status
+	 *            当前棋面
 	 * @return 移动是否复合规则
 	 */
-	public abstract boolean move(int x,int y,int current_status[][]);
+	public abstract boolean move(int x, int y, int current_status[][]);
 }

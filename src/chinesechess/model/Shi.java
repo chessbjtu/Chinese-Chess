@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 
 public class Shi extends Chess {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6554989220838368463L;
+
 	public Shi(boolean who, ImageIcon image, int x, int y) {
 		super(who, null, x, y);
 		if (who) {//ºì·½
