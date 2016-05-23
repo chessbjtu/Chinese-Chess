@@ -28,8 +28,51 @@ public class Zu extends Chess {
 
 	@Override
 	public boolean move(int x, int y, int[][] current_status) {
-		// TODO Auto-generated method stub
-		return false;
+		if (isWho()) {// 红方
+			if (getY() < 5 && y == getY() + 1 && x == getX()) {// 过河前只能前进
+				if (current_status[x][y] > 0 && current_status[x][y] <= 16) {
+					return false;
+				} else {
+					return true;
+				}
+			} else if (getY() >= 5 && y == getY() + 1 && x == getX()) {// 过河后向前进
+				if (current_status[x][y] > 0 && current_status[x][y] <= 16) {
+					return false;
+				} else {
+					return true;
+				}
+			} else if (getY() >= 5 && Math.abs(x - getX()) == 1 && y == getY()) {// 过河后向左右移动
+				if (current_status[x][y] > 0 && current_status[x][y] <= 16) {
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		} else {// 黑方
+			if (getY() >= 5 && y == getY() - 1 && x == getX()) {// 过河前只能前进
+				if (current_status[x][y] > 0 && current_status[x][y] <= 16) {
+					return false;
+				} else {
+					return true;
+				}
+			} else if (getY() < 5 && y == getY() - 1 && x == getX()) {// 过河后向前进
+				if (current_status[x][y] > 0 && current_status[x][y] <= 16) {
+					return false;
+				} else {
+					return true;
+				}
+			} else if (getY() < 5 && Math.abs(x - getX()) == 1 && y == getY()) {// 过河后向左右移动
+				if (current_status[x][y] > 0 && current_status[x][y] <= 16) {
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		}
 	}
 
 }
