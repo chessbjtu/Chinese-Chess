@@ -32,7 +32,14 @@ public class Che extends Chess {
 	 */
 	@Override
 	public boolean move(int x, int y, int[][] current_status) {
-		if (getX() == x) {// 纵向移动
+
+		// 排除原地不动的情况
+		if (getX() == x && getY() == y) {
+			return false;
+
+		}
+		// 纵向移动
+		else if (getX() == x && getY() != y) {
 
 			// 判断起点与终点之间的格子，如果如果有棋子，则返回false
 			for (int temp = getY(); temp < y; temp++) {
@@ -47,29 +54,43 @@ public class Che extends Chess {
 			// 3.有己方棋子，移动非法，返回false
 			if (current_status[x][y] == 0) {
 				return true;
-			} else if (current_status[x][y] > 15) {
-				return true;
-			} else {
-				return false;
+			} else if (isWho()) {// 红方
+				if (current_status[x][y] > 16)// 敌方棋子
+					return true;
+				else
+					return false;
+			} else {// 黑方
+				if (current_status[x][y] <= 16)// 敌方棋子
+					return true;
+				else
+					return false;
 			}
 
-		} else if (getY() == y) {// 横向移动
-
+		}
+		// 横向移动
+		else if (getX() != x && getY() == y) {
 			// 这部分逻辑同纵向移动
 			for (int temp = getX(); temp < x; temp++) {
 				if (current_status[temp][y] == 0) {
 					return true;
 				}
 			}
-
 			if (current_status[x][y] == 0) {
 				return true;
-			} else if (current_status[x][y] > 15) {
-				return true;
-			} else {
-				return false;
+			} else if (isWho()) {// 红方
+				if (current_status[x][y] > 16)// 敌方棋子
+					return true;
+				else
+					return false;
+			} else {// 黑方
+				if (current_status[x][y] <= 16)// 敌方棋子
+					return true;
+				else
+					return false;
 			}
-		} else {// 非法移动
+		}
+		// 非法移动
+		else {
 			return false;
 		}
 	}

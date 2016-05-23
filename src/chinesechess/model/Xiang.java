@@ -9,7 +9,7 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
-public class Xiang extends Chess{
+public class Xiang extends Chess {
 
 	/**
 	 * 
@@ -18,20 +18,115 @@ public class Xiang extends Chess{
 
 	public Xiang(boolean who, ImageIcon image, int x, int y) {
 		super(who, null, x, y);
-		if (who) {//红方
+		if (who) {// 红方
 			URL imgURL = getClass().getResource("chinesechess/resource/r_Xiang.jpg");
 			setImage(new ImageIcon(imgURL));
-		} else {//黑方
+		} else {// 黑方
 			URL imgURL = getClass().getResource("chinesechess/resource/b_Xiang.jpg");
 			setImage(new ImageIcon(imgURL));
 		}
 	}
 
+	/**
+	 * 象的移动：1.沿斜线移动，每次两格。2.中间不能有任何棋子
+	 */
 	@Override
 	public boolean move(int x, int y, int[][] current_status) {
-		// TODO Auto-generated method stub
+		// 分别判断四个方向
+
+		// 左下
+		if (x == (getX() - 2) && y == (getY() - 2)) {
+			// 中间的格不能有棋子
+			if (current_status[getX() - 1][getY() - 1] != 0)
+				return false;
+
+			// 中间没有棋子且终点有棋子
+			else if (current_status[x][y] != 0) {
+
+				if (isWho()) {// 红方
+					if (current_status[x][y] > 16)// 敌方棋子
+						return true;
+					else
+						return false;
+				} else {// 黑方
+					if (current_status[x][y] <= 16)// 敌方棋子
+						return true;
+					else
+						return false;
+				}
+			}
+
+			// 终点没有棋子
+			else
+				return true;
+		}
+
+		// 右下
+		else if (x == (getX() + 2) && y == (getY() - 2)) {
+			// 逻辑同上
+			if (current_status[getX() + 1][getY() - 1] != 0)
+				return false;
+			else if (current_status[x][y] != 0) {
+
+				if (isWho()) {
+					if (current_status[x][y] > 16)
+						return true;
+					else
+						return false;
+				} else {
+					if (current_status[x][y] <= 16)
+						return true;
+					else
+						return false;
+				}
+			} else
+				return true;
+		}
+
+		// 右上
+		else if (x == (getX() + 2) && y == (getY() + 2)) {
+			// 逻辑同上
+			if (current_status[getX() + 1][getY() + 1] != 0)
+				return false;
+			else if (current_status[x][y] != 0) {
+
+				if (isWho()) {
+					if (current_status[x][y] > 16)
+						return true;
+					else
+						return false;
+				} else {
+					if (current_status[x][y] <= 16)
+						return true;
+					else
+						return false;
+				}
+			} else
+				return true;
+		}
+
+		// 左上
+		else if (x == (getX() - 2) && y == (getY() + 2)) {
+			// 逻辑同上
+			if (current_status[getX() - 1][getY() - 1] != 0)
+				return false;
+			else if (current_status[x][y] != 0) {
+
+				if (isWho()) {
+					if (current_status[x][y] > 16)
+						return true;
+					else
+						return false;
+				} else {
+					if (current_status[x][y] <= 16)
+						return true;
+					else
+						return false;
+				}
+			} else
+				return true;
+		}
 		return false;
 	}
-	
 
 }

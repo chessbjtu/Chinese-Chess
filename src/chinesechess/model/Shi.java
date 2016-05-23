@@ -27,6 +27,9 @@ public class Shi extends Chess {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean move(int x, int y, int[][] current_status) {
 		// TODO Auto-generated method stub
