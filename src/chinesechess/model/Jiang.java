@@ -40,8 +40,8 @@ public class Jiang extends Chess {
 
 		// 上、下及将和帅在一条直线的情况
 		else if (x == getX()) {
-			// 上
-			if (y == getY() + 1) {
+			// 上、下
+			if (Math.abs(getY() - y) == 1) {
 				// 判断终点处的情况，终点处有以下情况：
 				// 1.没有棋子，移动合法，返回true
 				// 2.有敌方棋子，移动合法，返回true
@@ -59,51 +59,25 @@ public class Jiang extends Chess {
 					else
 						return false;
 				}
-			}
-
-			// 下
-			else if (y == getY() - 1) {
-				if (current_status[x][y] == 0) {
-					return true;
-				} else if (isWho()) {// 红方
-					if (current_status[x][y] > 16)// 敌方棋子
-						return true;
-					else
-						return false;
-				} else {// 黑方
-					if (current_status[x][y] <= 16)// 敌方棋子
-						return true;
-					else
+			} else if (current_status[x][y] == 28 && isWho()) {
+				for (int temp = getY() + 1; temp < y; temp++) {
+					if (current_status[x][temp] != 0)
 						return false;
 				}
-			} else if (current_status[x][y] == 28 && isWho()) {
 				return true;
 			} else if (current_status[x][y] == 5 && !isWho()) {
+				for (int temp = getY() - 1; temp > y; temp--) {
+					if (current_status[x][temp] != 0)
+						return false;
+				}
 				return true;
 			} else {
 				return false;
 			}
 		}
 
-		// 左
-		else if (x == getX() - 1 && y == getY()) {
-			// 逻辑同上
-			if (current_status[x][y] == 0) {
-				return true;
-			} else if (isWho()) {// 红方
-				if (current_status[x][y] > 16)// 敌方棋子
-					return true;
-				else
-					return false;
-			} else {// 黑方
-				if (current_status[x][y] <= 16)// 敌方棋子
-					return true;
-				else
-					return false;
-			}
-		}
-		// 右
-		else if (x == getX() + 1 && y == getY()) {
+		// 左和右
+		else if (Math.abs(getX() - x) == 1 && y == getY()) {
 			// 逻辑同上
 			if (current_status[x][y] == 0) {
 				return true;

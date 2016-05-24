@@ -35,9 +35,9 @@ public class Xiang extends Chess {
 		// 分别判断四个方向
 
 		// 左下
-		if (x == (getX() - 2) && y == (getY() - 2)) {
+		if (Math.abs(getX() - x) == 2 && Math.abs(getY() - y) == 2) {
 			// 中间的格不能有棋子
-			if (current_status[getX() - 1][getY() - 1] != 0)
+			if (current_status[(getX() + x) / 2][(getY() + y) / 2] != 0)
 				return false;
 
 			// 中间没有棋子且终点有棋子
@@ -59,74 +59,7 @@ public class Xiang extends Chess {
 			// 终点没有棋子
 			else
 				return true;
-		}
-
-		// 右下
-		else if (x == (getX() + 2) && y == (getY() - 2)) {
-			// 逻辑同上
-			if (current_status[getX() + 1][getY() - 1] != 0)
-				return false;
-			else if (current_status[x][y] != 0) {
-
-				if (isWho()) {
-					if (current_status[x][y] > 16)
-						return true;
-					else
-						return false;
-				} else {
-					if (current_status[x][y] <= 16)
-						return true;
-					else
-						return false;
-				}
-			} else
-				return true;
-		}
-
-		// 右上
-		else if (x == (getX() + 2) && y == (getY() + 2)) {
-			// 逻辑同上
-			if (current_status[getX() + 1][getY() + 1] != 0)
-				return false;
-			else if (current_status[x][y] != 0) {
-
-				if (isWho()) {
-					if (current_status[x][y] > 16)
-						return true;
-					else
-						return false;
-				} else {
-					if (current_status[x][y] <= 16)
-						return true;
-					else
-						return false;
-				}
-			} else
-				return true;
-		}
-
-		// 左上
-		else if (x == (getX() - 2) && y == (getY() + 2)) {
-			// 逻辑同上
-			if (current_status[getX() - 1][getY() - 1] != 0)
-				return false;
-			else if (current_status[x][y] != 0) {
-
-				if (isWho()) {
-					if (current_status[x][y] > 16)
-						return true;
-					else
-						return false;
-				} else {
-					if (current_status[x][y] <= 16)
-						return true;
-					else
-						return false;
-				}
-			} else
-				return true;
-		}
-		return false;
+		} else
+			return false;
 	}
-
 }

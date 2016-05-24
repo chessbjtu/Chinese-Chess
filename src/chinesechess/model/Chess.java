@@ -68,4 +68,11 @@ public abstract class Chess extends JLabel {
 	 * @return 移动是否复合规则
 	 */
 	public abstract boolean move(int x, int y, int current_status[][]);
+
+	/**
+	 * 终点坐标是否符合范围，需要重写的子类
+	 */
+	public boolean IsBeyond(int x, int y) {
+		return true;
+	}
 }
