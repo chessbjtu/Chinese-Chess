@@ -15,14 +15,12 @@ public class Zu extends Chess {
 	 */
 	private static final long serialVersionUID = -6198652456049799687L;
 
-	public Zu(boolean who, ImageIcon image, int x, int y) {
-		super(who, null, x, y);
+	public Zu(boolean who, int x, int y) {
+		super(who, x, y);
 		if (who) {// ºì·½
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Xiang.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/ºì×ä.gif"));
 		} else {// ºÚ·½
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Xiang.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/ºÚ×ä.gif"));
 		}
 	}
 

@@ -16,14 +16,12 @@ public class Shi extends Chess {
 	 */
 	private static final long serialVersionUID = -6554989220838368463L;
 
-	public Shi(boolean who, ImageIcon image, int x, int y) {
-		super(who, null, x, y);
+	public Shi(boolean who, int x, int y) {
+		super(who, x, y);
 		if (who) {//红方
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Shi.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/红士.gif"));
 		} else {//黑方
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Shi.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/黑士.gif"));
 		}
 	}
 

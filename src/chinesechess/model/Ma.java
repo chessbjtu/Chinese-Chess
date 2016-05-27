@@ -16,14 +16,12 @@ public class Ma extends Chess {
 	 */
 	private static final long serialVersionUID = 6306713258821114291L;
 
-	public Ma(boolean who, ImageIcon image, int x, int y) {
-		super(who, null, x, y);
+	public Ma(boolean who, int x, int y) {
+		super(who, x, y);
 		if (who) {// 红方
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Ma.jpg");
-			setImage(new ImageIcon(imgURL));
-		} else {// 黑方
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Ma.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/红马.gif"));
+		} else {// 黑方s
+			setImage(new ImageIcon("image/黑马.gif"));
 		}
 	}
 

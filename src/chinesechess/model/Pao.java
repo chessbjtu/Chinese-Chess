@@ -16,14 +16,12 @@ public class Pao extends Chess {
 	 */
 	private static final long serialVersionUID = -4388807141617701084L;
 
-	public Pao(boolean who, ImageIcon image, int x, int y) {
-		super(who, null, x, y);
+	public Pao(boolean who, int x, int y) {
+		super(who, x, y);
 		if (who) {// ºì·½
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Pao.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/ºìÅÚ.gif"));
 		} else {// ºÚ·½
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Pao.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/ºÚÅÚ.gif"));
 		}
 	}
 

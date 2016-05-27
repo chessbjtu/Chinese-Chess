@@ -17,13 +17,11 @@ public class Che extends Chess {
 	private static final long serialVersionUID = -3008215849044329804L;
 
 	public Che(boolean who, int x, int y) {
-		super(who, null, x, y);
+		super(who, x, y);
 		if (who) {// 红方
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Che.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/红车.gif"));
 		} else {// 黑方
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Che.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/黑车.gif"));
 		}
 	}
 

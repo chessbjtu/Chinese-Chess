@@ -16,14 +16,12 @@ public class Xiang extends Chess {
 	 */
 	private static final long serialVersionUID = -8443336074937616571L;
 
-	public Xiang(boolean who, ImageIcon image, int x, int y) {
-		super(who, null, x, y);
+	public Xiang(boolean who, int x, int y) {
+		super(who, x, y);
 		if (who) {// 红方
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Xiang.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/红象.gif"));
 		} else {// 黑方
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Xiang.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/黑象.gif"));
 		}
 	}
 

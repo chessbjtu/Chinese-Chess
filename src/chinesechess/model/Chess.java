@@ -8,6 +8,8 @@ package chinesechess.model;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import chinesechess.logic.ChessListener;
+
 /**
  * 棋子
  * 
@@ -20,17 +22,16 @@ public abstract class Chess extends JLabel {
 	private static final long serialVersionUID = 3172086585879537618L;
 	// 棋子阵营,true为红方,false为黑方
 	private boolean who;
-	// 棋子图片
-	@SuppressWarnings("unused")
-	private ImageIcon image;
 	// 棋子坐标
 	private int x, y;
+	// 是否被选定
+	public boolean slected = false;
 
-	public Chess(boolean who, ImageIcon image, int x, int y) {
+	public Chess(boolean who, int x, int y) {
+		super();
 		this.who = who;
-		this.image = image;
-		this.x = x;
-		this.y = y;
+		setBounds(x * 57 + 27, y * 57 + 27, 70, 70);
+		setFocusable(true);
 	}
 
 	public boolean isWho() {
@@ -38,7 +39,7 @@ public abstract class Chess extends JLabel {
 	}
 
 	public void setImage(ImageIcon image) {
-		this.image = image;
+		this.setIcon(image);
 	}
 
 	public int getX() {

@@ -16,14 +16,12 @@ public class Jiang extends Chess {
 	 */
 	private static final long serialVersionUID = -5004111131337128396L;
 
-	public Jiang(boolean who, ImageIcon image, int x, int y) {
-		super(who, null, x, y);
+	public Jiang(boolean who, int x, int y) {
+		super(who, x, y);
 		if (who) {// 红方
-			URL imgURL = getClass().getResource("chinesechess/resource/r_Jiang.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/红将.gif"));
 		} else {// 黑方
-			URL imgURL = getClass().getResource("chinesechess/resource/b_Jiang.jpg");
-			setImage(new ImageIcon(imgURL));
+			setImage(new ImageIcon("image/黑将.gif"));
 		}
 	}
 
