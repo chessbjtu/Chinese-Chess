@@ -5,6 +5,8 @@
 */
 package chinesechess.model;
 
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -23,15 +25,18 @@ public abstract class Chess extends JLabel {
 	// 棋子阵营,true为红方,false为黑方
 	private boolean who;
 	// 棋子坐标
-	private int x, y;
+	private Point coordinate;
+
 	// 是否被选定
 	public boolean slected = false;
 
 	public Chess(boolean who, int x, int y) {
 		super();
 		this.who = who;
+		coordinate = new Point(x+1, y+1);
 		setBounds(x * 57 + 27, y * 57 + 27, 70, 70);
 		setFocusable(true);
+		addMouseListener(new ChessListener());
 	}
 
 	public boolean isWho() {
@@ -42,20 +47,11 @@ public abstract class Chess extends JLabel {
 		this.setIcon(image);
 	}
 
-	public int getX() {
-		return x;
+	public Point getCoordinate() {
+		return coordinate;
 	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
+	public void setCoordinate(Point coordinate) {
+		this.coordinate = coordinate;
 	}
 
 	/**
@@ -68,7 +64,7 @@ public abstract class Chess extends JLabel {
 	 *            当前棋面
 	 * @return 移动是否复合规则
 	 */
-	public abstract boolean move(int x, int y, int current_status[][]);
+	public abstract boolean move(Point destination, int current_status[][]);
 
 	/**
 	 * 终点坐标是否符合范围，需要重写的子类
@@ -76,4 +72,5 @@ public abstract class Chess extends JLabel {
 	public boolean IsBeyond(int x, int y) {
 		return true;
 	}
+
 }

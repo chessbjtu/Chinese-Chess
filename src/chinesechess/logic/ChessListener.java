@@ -16,7 +16,11 @@ public class ChessListener extends MouseAdapter {
 		if (e.getSource() instanceof Chess) {
 			Chess source = (Chess) e.getSource();
 			source.slected = !source.slected;
-			System.out.println(source.slected);
+			System.out.println("Slected: " + source.slected);
+			if (source.slected) {
+				System.out.println("Start: " + source.getCoordinate());
+			}
+
 		}
 	}
 }

@@ -5,6 +5,7 @@
 */
 package chinesechess.model;
 
+import java.awt.Point;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class Che extends Chess {
 	 * 车的移动策略，首先保证直线移动 其次，移动路径中不能有其他棋子 终点坐标如果为敌方棋子，移动同样合法
 	 */
 	@Override
-	public boolean move(int x, int y, int[][] current_status) {
+	public boolean move(Point destination, int[][] current_status) {
 
 		// 排除原地不动的情况
 		if (getX() == x && getY() == y) {
