@@ -5,6 +5,7 @@
 */
 package chinesechess.model;
 
+import java.awt.Point;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -26,17 +27,19 @@ public class Ma extends Chess {
 	}
 
 	@Override
-	public boolean move(int x, int y, int[][] current_status) {
-		if (Math.abs(y - getY()) == 2 && Math.abs(x - getX()) == 1) {// 纵方向上移动两格
-			if (current_status[getX()][(y + getY()) / 2] == 0) {// 判断是否蹩脚
+	public boolean move(Point destination, int[][] current_status) {
+		Point start = getCoordinate();
+		int index_x = destination.x - 1, index_y = destination.y - 1;
+		if (Math.abs(destination.y - start.y) == 2 && Math.abs(destination.x - start.x) == 1) {// 纵方向上移动两格
+			if (current_status[start.x-1][((destination.y + start.y) / 2)-1] == 0) {// 判断是否蹩脚
 				if (isWho()) {// 红方
-					if (current_status[x][y] > 16) {
+					if (current_status[index_x][index_y] > 16) {
 						return true;
 					} else {
 						return false;
 					}
 				} else {// 黑方
-					if (current_status[x][y] <= 16) {
+					if (current_status[index_x][index_y] <= 16) {
 						return true;
 					} else {
 						return false;
@@ -45,16 +48,16 @@ public class Ma extends Chess {
 			} else {
 				return false;
 			}
-		} else if (Math.abs(y - getY()) == 1 && Math.abs(x - getX()) == 2) {// 横方向上移动两格
-			if (current_status[(x + getX()) / 2][getY()] == 0) {// 判断是否蹩脚
+		} else if (Math.abs(destination.y - start.y) == 1 && Math.abs(destination.x - start.x) == 2) {// 横方向上移动两格
+			if (current_status[((destination.x + start.x) / 2)-1][start.y-1] == 0) {// 判断是否蹩脚
 				if (isWho()) {// 红方
-					if (current_status[x][y] > 16) {
+					if (current_status[index_x][index_y] > 16) {
 						return true;
 					} else {
 						return false;
 					}
 				} else {// 黑方
-					if (current_status[x][y] <= 16) {
+					if (current_status[index_x][index_y] <= 16) {
 						return true;
 					} else {
 						return false;

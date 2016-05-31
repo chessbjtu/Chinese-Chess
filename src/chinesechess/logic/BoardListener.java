@@ -33,18 +33,17 @@ public class BoardListener extends MouseAdapter {
 				System.out.println("Destination: " + destination);
 				System.out.println("Move:" + temp.move(destination, current_status) + "\n"
 						+ current_status[destination.x][destination.x]);
-				// if (temp.move(destination, current_status)) {
-				Point site = Board.praseSite(destination);
-				Point start = temp.getCoordinate();
-				temp.setBounds(site.x, site.y, 70, 70);
+				if (temp.move(destination, current_status)) {
+					Point site = Board.praseSite(destination);
+					Point start = temp.getCoordinate();
+					temp.setBounds(site.x, site.y, 70, 70);
 
-				// current_status[destination.x - 1][destination.y - 1] =
-				// current_status[start.x - 1][start.y - 1];
-				// current_status[start.x - 1][start.y - 1] = 0;
+					current_status[destination.x - 1][destination.y - 1] = current_status[start.x - 1][start.y - 1];
+					current_status[start.x - 1][start.y - 1] = 0;
 
-				temp.setCoordinate(destination);
-				temp.slected = !temp.slected;
-				// }
+					temp.setCoordinate(destination);
+					temp.slected = !temp.slected;
+				}
 			}
 		}
 	}

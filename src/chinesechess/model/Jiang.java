@@ -61,14 +61,14 @@ public class Jiang extends Chess {
 						return false;
 				}
 			} else if (current_status[index_x][index_y] == 28 && isWho()) {
-				for (int temp = getY() + 1; temp < destination.y; temp++) {
-					if (current_status[index_x][temp] != 0)
+				for (int temp = start.y + 1; temp < destination.y; temp++) {
+					if (current_status[index_x][temp-1] != 0)
 						return false;
 				}
 				return true;
 			} else if (current_status[index_x][destination.y] == 5 && !isWho()) {
-				for (int temp = getY() - 1; temp > destination.y; temp--) {
-					if (current_status[index_x][temp] != 0)
+				for (int temp = start.y - 1; temp > destination.y; temp--) {
+					if (current_status[index_x][temp-1] != 0)
 						return false;
 				}
 				return true;
@@ -80,7 +80,7 @@ public class Jiang extends Chess {
 		// 左和右
 		else if (Math.abs(start.x - destination.x) == 1 && destination.y == start.y) {
 			// 逻辑同上
-			if (current_status[index_x][destination.y] == 0) {
+			if (current_status[index_x][index_y] == 0) {
 				return true;
 			} else if (isWho()) {// 红方
 				if (current_status[index_x][index_y] > 16)// 敌方棋子

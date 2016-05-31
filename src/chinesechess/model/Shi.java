@@ -5,6 +5,7 @@
 */
 package chinesechess.model;
 
+import java.awt.Point;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -29,8 +30,7 @@ public class Shi extends Chess {
 	 * 
 	 */
 	@Override
-	public boolean move(int x, int y, int[][] current_status) {
-		// TODO Auto-generated method stub
+	public boolean move(Point destination, int[][] current_status) {
 		return false;
 	}
 

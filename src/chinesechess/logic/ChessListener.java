@@ -20,7 +20,6 @@ public class ChessListener extends MouseAdapter {
 			if (source.slected) {
 				System.out.println("Start: " + source.getCoordinate());
 			}
-
 		}
 	}
 }

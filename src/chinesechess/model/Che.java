@@ -31,18 +31,19 @@ public class Che extends Chess {
 	 */
 	@Override
 	public boolean move(Point destination, int[][] current_status) {
-
+		Point start = getCoordinate();
+		int index_x = destination.x - 1, index_y = destination.y - 1;
 		// 排除原地不动的情况
-		if (getX() == x && getY() == y) {
+		if (start.equals(destination)) {
 			return false;
 
 		}
 		// 纵向移动
-		else if (getX() == x && getY() != y) {
+		else if (start.x == destination.x && start.y != destination.y) {
 
 			// 判断起点与终点之间的格子，如果如果有棋子，则返回false
-			for (int temp = getY(); temp < y; temp++) {
-				if (current_status[x][temp] != 0) {
+			for (int temp = start.y; temp < destination.y; temp++) {
+				if (current_status[index_x][temp-1] != 0) {
 					return false;
 				}
 			}
@@ -51,15 +52,15 @@ public class Che extends Chess {
 			// 1.没有棋子，移动合法，返回true
 			// 2.有敌方棋子，移动合法，返回true
 			// 3.有己方棋子，移动非法，返回false
-			if (current_status[x][y] == 0) {
+			if (current_status[index_x][index_y] == 0) {
 				return true;
 			} else if (isWho()) {// 红方
-				if (current_status[x][y] > 16)// 敌方棋子
+				if (current_status[index_x][index_y] > 16)// 敌方棋子
 					return true;
 				else
 					return false;
 			} else {// 黑方
-				if (current_status[x][y] <= 16)// 敌方棋子
+				if (current_status[index_x][index_y] <= 16)// 敌方棋子
 					return true;
 				else
 					return false;
@@ -67,22 +68,22 @@ public class Che extends Chess {
 
 		}
 		// 横向移动
-		else if (getX() != x && getY() == y) {
+		else if (start.x != destination.x && start.y == destination.y) {
 			// 这部分逻辑同纵向移动
-			for (int temp = getX(); temp < x; temp++) {
-				if (current_status[temp][y] == 0) {
+			for (int temp = start.x; temp < destination.x; temp++) {
+				if (current_status[temp-1][index_y] == 0) {
 					return true;
 				}
 			}
-			if (current_status[x][y] == 0) {
+			if (current_status[index_x][index_y] == 0) {
 				return true;
 			} else if (isWho()) {// 红方
-				if (current_status[x][y] > 16)// 敌方棋子
+				if (current_status[index_x][index_y] > 16)// 敌方棋子
 					return true;
 				else
 					return false;
 			} else {// 黑方
-				if (current_status[x][y] <= 16)// 敌方棋子
+				if (current_status[index_x][index_y] <= 16)// 敌方棋子
 					return true;
 				else
 					return false;
