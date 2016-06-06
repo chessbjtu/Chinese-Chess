@@ -6,14 +6,12 @@
 package chinesechess.view;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
 import chinesechess.logic.BoardListener;
-import chinesechess.logic.ChessListener;
+import chinesechess.logic.MainController;
 import chinesechess.model.*;
 
 public class Board extends ChessFrame {
@@ -23,19 +21,17 @@ public class Board extends ChessFrame {
 	private static final long serialVersionUID = 2156538120526170067L;
 	private BackGroundPanel main = new BackGroundPanel();
 	private ArrayList<Chess> chesses = new ArrayList<>();
-	private int[][] current_status = { { 1, 0, 0, 12, 0, 0, 17, 0, 0, 24 }, 
-			                           { 2, 0, 10, 0, 0, 0, 0, 22, 0, 25 },
-			                           { 3, 0, 0, 13, 0, 0, 18, 0, 0, 26 }, 
-			                           { 4, 0, 0, 0, 0, 0, 0, 0, 0, 27 }, 
-			                           { 5, 0, 0, 14, 0, 0, 19, 0, 0, 28 },
-			                           { 6, 0, 0, 0, 0, 0, 0, 0, 0, 29 }, 
-			                           { 7, 0, 0, 15, 0, 0, 20, 0, 0, 30 }, 
-			                           { 8, 0, 11, 0, 0, 0, 0, 23, 0, 31 },
-			                           { 9, 0, 0, 16, 0, 0, 21, 0, 0, 32 } };
+	public int[][] current_status = { { 1, 0, 0, 12, 0, 0, 17, 0, 0, 24 }, { 2, 0, 10, 0, 0, 0, 0, 22, 0, 25 },
+			{ 3, 0, 0, 13, 0, 0, 18, 0, 0, 26 }, { 4, 0, 0, 0, 0, 0, 0, 0, 0, 27 }, { 5, 0, 0, 14, 0, 0, 19, 0, 0, 28 },
+			{ 6, 0, 0, 0, 0, 0, 0, 0, 0, 29 }, { 7, 0, 0, 15, 0, 0, 20, 0, 0, 30 }, { 8, 0, 11, 0, 0, 0, 0, 23, 0, 31 },
+			{ 9, 0, 0, 16, 0, 0, 21, 0, 0, 32 } };
+	private Hint[] hints = new Hint[3];
 
 	public Board() {
+		initHint();
 		initChess();
 		initBoard();
+
 	}
 
 	private void initBoard() {
@@ -46,10 +42,14 @@ public class Board extends ChessFrame {
 		// 棋盘居中
 		this.locationCenter();
 		this.addMouseListener(new BoardListener(chesses, current_status));
+		// 添加hint
+		for (Hint hint : hints) {
+			main.add(hint);
+		}
+
 	}
 
 	public void initChess() {
-
 		boolean who = true;
 		for (int i = 0; i < 2; i++) {
 			// 添加车
@@ -119,7 +119,45 @@ public class Board extends ChessFrame {
 		return point;
 	}
 
+	/**
+	 * 初始化hint
+	 */
+	private void initHint() {
+		hints[0] = new Hint(new ImageIcon("image/bluehint.png"));
+		hints[1] = new Hint(new ImageIcon("image/redhint.png"));
+		hints[2] = new Hint(new ImageIcon("image/redhint.png"));
+		for (Hint hint : hints) {
+			hint.setVisible(false);
+		}
+	}
+
+	/**
+	 * 修改棋盘上的Hint
+	 * 
+	 * @param site
+	 *            目标位置
+	 * @param type
+	 *            修改的hint类型,true移动性修改，false选择性修改
+	 */
+	public void setHint(Point site, boolean type) {
+		// 修改为移动性Hint
+		if (type) {
+			hints[0].setVisible(false);
+			hints[1].setSite(hints[0].getSite());
+			hints[1].setVisible(true);
+			hints[2].setSite(site);
+			hints[2].setVisible(true);
+		} else {// 修改为选择性Hint
+			hints[0].setSite(site);
+			hints[0].setVisible(true);
+			hints[1].setVisible(false);
+			hints[2].setVisible(false);
+		}
+	}
+
 	public static void main(String[] args) {
-		new Board();
+		Board chessboard = new Board();
+		// 将棋盘交由总控控制
+		MainController.Controller(chessboard);
 	}
 }

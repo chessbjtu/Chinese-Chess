@@ -31,40 +31,40 @@ public class Ma extends Chess {
 		Point start = getCoordinate();
 		int index_x = destination.x - 1, index_y = destination.y - 1;
 		if (Math.abs(destination.y - start.y) == 2 && Math.abs(destination.x - start.x) == 1) {// ×İ·½ÏòÉÏÒÆ¶¯Á½¸ñ
-			if (current_status[start.x-1][((destination.y + start.y) / 2)-1] == 0) {// ÅĞ¶ÏÊÇ·ñõ¿½Å
+			if (current_status[start.x-1][((destination.y + start.y) / 2)-1] != 0) {// ÅĞ¶ÏÊÇ·ñõ¿½Å
 				if (isWho()) {// ºì·½
-					if (current_status[index_x][index_y] > 16) {
+					if (current_status[index_x][index_y] <= 16) {
 						return true;
 					} else {
 						return false;
 					}
 				} else {// ºÚ·½
-					if (current_status[index_x][index_y] <= 16) {
+					if (current_status[index_x][index_y] > 16) {
 						return true;
 					} else {
 						return false;
 					}
 				}
 			} else {
-				return false;
+				return true;
 			}
 		} else if (Math.abs(destination.y - start.y) == 1 && Math.abs(destination.x - start.x) == 2) {// ºá·½ÏòÉÏÒÆ¶¯Á½¸ñ
-			if (current_status[((destination.x + start.x) / 2)-1][start.y-1] == 0) {// ÅĞ¶ÏÊÇ·ñõ¿½Å
+			if (current_status[((destination.x + start.x) / 2)-1][start.y-1] != 0) {// ÅĞ¶ÏÊÇ·ñõ¿½Å
 				if (isWho()) {// ºì·½
-					if (current_status[index_x][index_y] > 16) {
+					if (current_status[index_x][index_y] <= 16) {
 						return true;
 					} else {
 						return false;
 					}
 				} else {// ºÚ·½
-					if (current_status[index_x][index_y] <= 16) {
+					if (current_status[index_x][index_y] > 16) {
 						return true;
 					} else {
 						return false;
 					}
 				}
 			} else {
-				return false;
+				return true;
 			}
 		} else {
 			return false;

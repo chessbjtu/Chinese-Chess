@@ -43,12 +43,12 @@ public class Xiang extends Chess {
 			else if (current_status[index_x][index_y] != 0) {
 
 				if (isWho()) {// 红方
-					if (current_status[index_x][index_y] > 16)// 敌方棋子
+					if (current_status[index_x][index_y] <= 16)// 敌方棋子
 						return true;
 					else
 						return false;
 				} else {// 黑方
-					if (current_status[index_x][index_y] <= 16)// 敌方棋子
+					if (current_status[index_x][index_y] > 16)// 敌方棋子
 						return true;
 					else
 						return false;

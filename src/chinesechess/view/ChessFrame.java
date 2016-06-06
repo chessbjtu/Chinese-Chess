@@ -6,11 +6,8 @@
 package chinesechess.view;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
@@ -20,9 +17,9 @@ public class ChessFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 11061916430458101L;
 	private Point loc = null;
-    private Point tmp = null;
-    private boolean isDragged = false;
-    private JFrame jFrame = this;
+	private Point tmp = null;
+	private boolean isDragged = false;
+	private JFrame jFrame = this;
 
 	public ChessFrame() {
 		this.setUndecorated(true);

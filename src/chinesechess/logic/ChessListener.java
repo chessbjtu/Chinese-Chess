@@ -12,14 +12,14 @@ import chinesechess.model.Chess;
 
 public class ChessListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
-
 		if (e.getSource() instanceof Chess) {
 			Chess source = (Chess) e.getSource();
-			source.slected = !source.slected;
-			System.out.println("Slected: " + source.slected);
-			if (source.slected) {
-				System.out.println("Start: " + source.getCoordinate());
-			}
+			MainController.Clicked(source);
+//			source.slected = !source.slected;
+//			System.out.println("Slected: " + source.slected);
+//			if (source.slected) {
+//				System.out.println("Start: " + source.getCoordinate());
+//			}
 		}
 	}
 }

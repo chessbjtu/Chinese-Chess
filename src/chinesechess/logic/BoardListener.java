@@ -26,25 +26,29 @@ public class BoardListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Point destination = Board.praseCoordinate(e.getPoint());
-		Iterator<Chess> iter = chesses.iterator();
-		while (iter.hasNext()) {
-			Chess temp = iter.next();
-			if (temp.slected) {
-				System.out.println("Destination: " + destination);
-				System.out.println("Move:" + temp.move(destination, current_status) + "\n"
-						+ current_status[destination.x][destination.x]);
-				if (temp.move(destination, current_status)) {
-					Point site = Board.praseSite(destination);
-					Point start = temp.getCoordinate();
-					temp.setBounds(site.x, site.y, 70, 70);
+		Point site = Board.praseSite(destination);
+		MainController.Clicked(destination);
+//		Iterator<Chess> iter = chesses.iterator();
+//		while (iter.hasNext()) {
+//			Chess temp = iter.next();
+//			
+//			Point start = temp.getCoordinate();
+//			if (temp.slected) {
+//				System.out.println("Destination: " + destination);
+//				System.out.println("Move:" + temp.move(destination, current_status) + "\n"
+//						+ current_status[destination.x - 1][destination.y - 1] + " "
+//						+ current_status[start.x - 1][start.y - 1]);
+//				if (temp.move(destination, current_status)) {
+//					temp.setBounds(site.x, site.y, 70, 70);
+//
+//					current_status[destination.x - 1][destination.y - 1] = current_status[start.x - 1][start.y - 1];
+//					current_status[start.x - 1][start.y - 1] = 0;
+//
+//					temp.setCoordinate(destination);
+//				}
+//				temp.slected = !temp.slected;
+//			}
 
-					current_status[destination.x - 1][destination.y - 1] = current_status[start.x - 1][start.y - 1];
-					current_status[start.x - 1][start.y - 1] = 0;
-
-					temp.setCoordinate(destination);
-					temp.slected = !temp.slected;
-				}
-			}
-		}
+//		}
 	}
 }

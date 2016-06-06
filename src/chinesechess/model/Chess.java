@@ -21,7 +21,7 @@ public abstract class Chess extends JLabel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3172086585879537618L;
+	private static final long serialVersionUID = 1L;
 	// 棋子阵营,true为红方,false为黑方
 	private boolean who;
 	// 棋子坐标
@@ -34,7 +34,7 @@ public abstract class Chess extends JLabel {
 		super();
 		this.who = who;
 		coordinate = new Point(x+1, y+1);
-		setBounds(x * 57 + 27, y * 57 + 27, 70, 70);
+		setBounds(x * 57 + 27, y * 57 + 27, 50, 50);
 		setFocusable(true);
 		addMouseListener(new ChessListener());
 	}

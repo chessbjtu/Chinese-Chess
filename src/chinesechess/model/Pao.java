@@ -43,7 +43,7 @@ public class Pao extends Chess {
 		// 竖直移动
 		else if (start.x == destination.x && start.y != destination.y) {
 			// 判断起点与终点之间的格子，计算移动路径中障碍棋子数量
-			for (int temp = start.y; temp < destination.y; temp++) {
+			for (int temp = Math.min(start.y, destination.y) + 1; temp < Math.max(start.y, destination.y); temp++) {
 				if (current_status[index_x][temp - 1] != 0) {
 					j++;
 				}
@@ -65,12 +65,12 @@ public class Pao extends Chess {
 			else if (j == 1) {
 				// 当目标位置上有对方棋子时，移动成功
 				if (isWho()) {// 红方
-					if (current_status[index_x][index_y] > 16)// 敌方棋子
+					if (current_status[index_x][index_y] <= 16)// 敌方棋子
 						return true;
 					else
 						return false;
 				} else if (!isWho()) {// 黑方
-					if (current_status[index_x][index_y] <= 16)// 敌方棋子
+					if (current_status[index_x][index_y] > 16)// 敌方棋子
 						return true;
 					else
 						return false;
@@ -89,7 +89,7 @@ public class Pao extends Chess {
 
 		// 水平移动,逻辑同上
 		else if (start.x != destination.x && start.y == destination.y) {
-			for (int temp = start.x; temp < destination.x; temp++) {
+			for (int temp = Math.min(start.x, destination.x) + 1; temp < Math.max(start.x, destination.x); temp++) {
 				if (current_status[temp - 1][index_y] != 0) {
 					j++;
 				}
@@ -102,12 +102,12 @@ public class Pao extends Chess {
 					return false;
 			} else if (j == 1) {
 				if (isWho()) {
-					if (current_status[index_x][index_y] > 16)
+					if (current_status[index_x][index_y] <= 16)
 						return true;
 					else
 						return false;
 				} else if (!isWho()) {
-					if (current_status[index_x][index_y] <= 16)
+					if (current_status[index_x][index_y] > 16)
 						return true;
 					else
 						return false;

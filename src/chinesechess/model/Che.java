@@ -6,8 +6,6 @@
 package chinesechess.model;
 
 import java.awt.Point;
-import java.net.URL;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -15,7 +13,7 @@ public class Che extends Chess {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3008215849044329804L;
+	private static final long serialVersionUID = 1L;
 
 	public Che(boolean who, int x, int y) {
 		super(who, x, y);
@@ -42,8 +40,8 @@ public class Che extends Chess {
 		else if (start.x == destination.x && start.y != destination.y) {
 
 			// 判断起点与终点之间的格子，如果如果有棋子，则返回false
-			for (int temp = start.y; temp < destination.y; temp++) {
-				if (current_status[index_x][temp-1] != 0) {
+			for (int temp = Math.min(start.y, destination.y) + 1; temp < Math.max(start.y, destination.y); temp++) {
+				if (current_status[index_x][temp - 1] != 0) {
 					return false;
 				}
 			}
@@ -55,12 +53,12 @@ public class Che extends Chess {
 			if (current_status[index_x][index_y] == 0) {
 				return true;
 			} else if (isWho()) {// 红方
-				if (current_status[index_x][index_y] > 16)// 敌方棋子
+				if (current_status[index_x][index_y] <= 16)// 敌方棋子
 					return true;
 				else
 					return false;
 			} else {// 黑方
-				if (current_status[index_x][index_y] <= 16)// 敌方棋子
+				if (current_status[index_x][index_y] > 16)// 敌方棋子
 					return true;
 				else
 					return false;
@@ -70,20 +68,20 @@ public class Che extends Chess {
 		// 横向移动
 		else if (start.x != destination.x && start.y == destination.y) {
 			// 这部分逻辑同纵向移动
-			for (int temp = start.x; temp < destination.x; temp++) {
-				if (current_status[temp-1][index_y] == 0) {
-					return true;
+			for (int temp = Math.min(start.x, destination.x) + 1; temp < Math.max(start.x, destination.x); temp++) {
+				if (current_status[temp - 1][index_y] != 0) {
+					return false;
 				}
 			}
 			if (current_status[index_x][index_y] == 0) {
 				return true;
 			} else if (isWho()) {// 红方
-				if (current_status[index_x][index_y] > 16)// 敌方棋子
+				if (current_status[index_x][index_y] <= 16)// 敌方棋子
 					return true;
 				else
 					return false;
 			} else {// 黑方
-				if (current_status[index_x][index_y] <= 16)// 敌方棋子
+				if (current_status[index_x][index_y] > 16)// 敌方棋子
 					return true;
 				else
 					return false;

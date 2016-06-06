@@ -6,7 +6,6 @@
 package chinesechess.model;
 
 import java.awt.Point;
-import java.net.URL;
 
 import javax.swing.ImageIcon;
 
@@ -50,25 +49,25 @@ public class Jiang extends Chess {
 				if (current_status[index_x][index_y] == 0) {
 					return true;
 				} else if (isWho()) {// 红方
-					if (current_status[index_x][index_y] > 16)// 敌方棋子
-						return true;
-					else
-						return false;
-				} else {// 黑方
 					if (current_status[index_x][index_y] <= 16)// 敌方棋子
 						return true;
 					else
 						return false;
+				} else {// 黑方
+					if (current_status[index_x][index_y] > 16)// 敌方棋子
+						return true;
+					else
+						return false;
 				}
-			} else if (current_status[index_x][index_y] == 28 && isWho()) {
+			} else if (current_status[index_x][index_y] == 28 && !isWho()) {
 				for (int temp = start.y + 1; temp < destination.y; temp++) {
-					if (current_status[index_x][temp-1] != 0)
+					if (current_status[index_x][temp - 1] != 0)
 						return false;
 				}
 				return true;
-			} else if (current_status[index_x][destination.y] == 5 && !isWho()) {
+			} else if (current_status[index_x][index_y] == 5 && isWho()) {
 				for (int temp = start.y - 1; temp > destination.y; temp--) {
-					if (current_status[index_x][temp-1] != 0)
+					if (current_status[index_x][temp - 1] != 0)
 						return false;
 				}
 				return true;
@@ -83,12 +82,12 @@ public class Jiang extends Chess {
 			if (current_status[index_x][index_y] == 0) {
 				return true;
 			} else if (isWho()) {// 红方
-				if (current_status[index_x][index_y] > 16)// 敌方棋子
+				if (current_status[index_x][index_y] <= 16)// 敌方棋子
 					return true;
 				else
 					return false;
 			} else {// 黑方
-				if (current_status[index_x][index_y] <= 16)// 敌方棋子
+				if (current_status[index_x][index_y] > 16)// 敌方棋子
 					return true;
 				else
 					return false;
