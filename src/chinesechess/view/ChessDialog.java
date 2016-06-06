@@ -24,7 +24,7 @@ public class ChessDialog extends JDialog {
 	public ChessDialog() {
 		this.setUndecorated(true);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		removable();
 	}
 
