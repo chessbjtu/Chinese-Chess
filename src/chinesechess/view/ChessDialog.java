@@ -11,7 +11,7 @@ import java.awt.Toolkit;
 
 import javax.swing.*;
 
-public class ChessFrame extends JFrame {
+public class ChessDialog extends JDialog {
 	/**
 	 * 
 	 */
@@ -19,9 +19,9 @@ public class ChessFrame extends JFrame {
 	private Point loc = null;
 	private Point tmp = null;
 	private boolean isDragged = false;
-	private JFrame jFrame = this;
+	private JDialog jDialog = this;
 
-	public ChessFrame() {
+	public ChessDialog() {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,9 +47,9 @@ public class ChessFrame extends JFrame {
 		this.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
 			public void mouseDragged(java.awt.event.MouseEvent e) {
 				if (isDragged) {
-					loc = new Point(jFrame.getLocation().x + e.getX() - tmp.x,
-							jFrame.getLocation().y + e.getY() - tmp.y);
-					jFrame.setLocation(loc);
+					loc = new Point(jDialog.getLocation().x + e.getX() - tmp.x,
+							jDialog.getLocation().y + e.getY() - tmp.y);
+					jDialog.setLocation(loc);
 				}
 			}
 		});

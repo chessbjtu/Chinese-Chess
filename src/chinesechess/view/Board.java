@@ -14,7 +14,7 @@ import chinesechess.logic.BoardListener;
 import chinesechess.logic.MainController;
 import chinesechess.model.*;
 
-public class Board extends ChessFrame {
+public class Board extends ChessDialog {
 	/**
 	 * 
 	 */
